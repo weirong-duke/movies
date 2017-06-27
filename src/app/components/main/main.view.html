@@ -1,0 +1,43 @@
+<div class="clutterflix-header">
+    ClutterFlix
+</div>
+
+<div class="main-container">
+
+     <div class="movie-search">
+         <div ng-show="loadingAllMovies">
+             Loading movies...
+         </div>
+         <div ng-show="!loadingAllMovies">
+             <input type="text" ng-model="movieSearch" ng-change="search()"/>
+             <ul ng-show="movieSearch">
+                 <li ng-click="getMovieDetails(movie)" ng-repeat="movie in movieList | filter : {title: movieSearch} | limitTo: 5">
+                     <div class="movie-search-result">
+                            <img src="app/images/batman.jpg" />
+                             <div>
+                                 {{movie.title}}
+                                     <p>
+                                         {{movie.release_date.substring(0,10)}}
+                                     </p>
+                             </div>
+                     </div>
+
+
+                 </li>
+             </ul>
+         </div>
+     </div>
+
+ <div class="movie-details">
+     <div ng-show="!selectedMovie" class="no-selection">
+         No movie selected
+     </div>
+     <div ng-show="selectedMovie" class="movie-image">
+        <img src="app/images/batman.jpg"  />
+     </div>
+     <div ng-show="selectedMovie" class="movie-information">
+         <h1>{{selectedMovie.title}} ({{selectedMovie.release_date.substring(0,4)}})</h1>
+     </div>
+ </div>
+
+</div>

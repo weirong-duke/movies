@@ -1,0 +1,126 @@
+/* Do not remove the comments below. It's the markers used by wiredep to inject sass dependencies when defined in the
+bower.json of your dependencies */
+// bower:scss
+// endbower
+$background-color: #efefef;
+$netflix-red: #db0000;
+
+
+$xs-size: 8px;
+$small-size: 10px;
+$medium-size: 16px;
+$large-size: 24px;
+$xl-size: 36px;
+$xxl-size: 48px;
+$xxxl-size: 64px;
+$super-size: 72px;
+$minimum-app-height: 80vh;
+
+$header-height: $xxxl-size;
+
+body {
+    font: normal 16px/150% 'Kanit', Arial, Helvetica, sans-serif;
+    background-image: url('./images/theaterDark.png');
+    background-repeat: no-repeat;
+}
+
+.clutterflix-header {
+    font-family: 'Kanit', sans-serif;
+    color: $netflix-red;
+    line-height:$header-height;
+    height: $header-height;
+    font-size: $xl-size;
+}
+
+.main-container {
+    display:flex;
+    flex-direction: row;
+    opacity: 0.65;
+    background-color: $background-color;
+}
+
+.movie-details {
+    display: flex;
+    flex-direction: row;
+    flex: 4;
+
+    margin: 20px;
+
+    min-height: $minimum-app-height;
+    display: inline;
+
+    .no-selection {
+        display: block;
+        text-align: center;
+        margin-top: 25%;
+        font-size: $xl-size;
+        height: 100%;
+    }
+
+    .movie-image {
+        display:inline-block;
+        max-width: 45%;
+        min-width: 320px;
+        height: 100%;
+        img{
+            height: 100%;
+            max-width: 100%;
+        }
+    }
+
+    .movie-information{
+        width: 60%;
+        margin-left: 10px;
+        height: 100%;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+}
+
+.movie-search {
+    display:flex;
+    flex: 0 1 auto;
+    min-height: $minimum-app-height;
+    width: 20%;
+    display: inline-block;
+    border-right: 1px solid #e8e8e8;
+    background-color: white;
+
+    ul {
+        margin:0px;
+        padding:0px;
+        list-style-type: none;
+    }
+}
+
+.movie-search-result{
+    height: $super-size;
+    margin: 5px;
+    padding-top: 5px;
+    border-top: 1px solid #e8e8e8;
+
+    .result-icon {
+        display: inline-block;
+    }
+
+    img {
+        max-height: 72px;
+    }
+
+    div {
+        display: inline;
+        width: 70%;
+        max-height: $super-size;
+        float:right;
+
+        font-size: $small-size;
+        vertical-align: top;
+    }
+}
+
+
+
+/* Do not remove the comments below. It's the markers used by gulp-inject to inject all your sass files automatically */
+// injector
+// endinjector
