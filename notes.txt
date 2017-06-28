@@ -1,0 +1,56 @@
+Node Version: 6.10.1
+Instructions to serve:
+1. cd src
+2. npm install && bower install
+3. gulp
+
+Notes:
+Pre-note: Not an excuse, but a reason. I was *technically* on vacation when I first received this exercise; it was a really
+fun application to build from the ground up but there was a decent amount of stress trying to get everything *perfect* :|
+
+I built the initial scaffolding off of a seed project https://github.com/1oginov/Angular-Gulp-Boilerplate.git. As I found
+out, there are a lot of structural designs within the base project that I disagreed with, so I shifted around some files,
+but mostly in /src/
+
+1. I initially ran into a lot of issues with selecting a seed project to build this off of. I've built a lot of Webpack 2
+React projects, and a lot of grunt + gulp projects; however, my experience with the build process is more leaned towards Webpack 2.
+
+However, I started realizing a lot of the Webpack 2 builds were using ES6 and not building things in a manner that I was
+accustomed to. It wasn't a huge deal but it was an annoyance having to decide between dozens of projects. I settled
+on an older seed using gulp.
+
+2. There were a few ways to approach the problem; depending on how large the entire movies database was, I could grab all
+the movies and store everything (and load everything) locally. Since the movies.json file here was fairly small, I did this
+for time's sake.
+
+Now, the way I would expect a truly scalable API to work, is that I would debounce a function on the search input every
+2 seconds or so, and then call out to actually grab the search results from movies.json?[title_cont]={movieName} search
+params. This would be far less load. Additionally, I would create a caching service that would store both a time received,
+and the data received. If the alotted time hadn't passed yet, we could just grab the existing data from the cache, saving
+a call to the API.
+
+3. It was a shock when I realized there was not an endpoint to go along with the movie/actor image urls. I have static
+images in the ng-repeats (picking the Batman movie from the search is the best choice), but with and actual enpoint those
+urls could be dynamically defined, and images retrieved.
+
+Getting image URLs would greatly benefit from the caching service.
+
+4. Date parsing could be better. I didn't want to bloat the app by grabbing moment but if there was a style clean-up that's
+thing I would do.
+
+5. I really wanted to break things out into components, but was running up against the timeline. I would abstract certain
+things (like the actor's pictures) to Angular directives to handle their own scope.
+
+6. This should probably have been earlier in the list, but I wanted to implement the REST "endpoints" and url calls in a 
+clean and understandable manner. I am fairly pleased with how those turned out (services/movieServices, app.constants.js).
+
+//end notes
+
+So, all in all I enjoyed doing the exercise; I think I made some good decisions visually, and I think I could have had
+better organization to start (when setting up the architecture). I really like the file structure within /src, but
+outside of that, it was all bundled with the seed.
+
+I would love to talk over both the good and bad decisions I made, as well as some of the things that I could have done better; honestly,
+
+
+Total time spend: ~7 hours

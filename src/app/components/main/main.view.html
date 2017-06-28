@@ -1,24 +1,22 @@
 <div class="clutterflix-header">
     ClutterFlix
 </div>
-
-<div class="main-container">
+<div class="search-loader" ng-show="loadingAllMovies">
+    <img src="app/images/loader.gif"  />
+</div>
+<div class="main-container" ng-show="!loadingAllMovies">
 
      <div class="movie-search">
-         <div ng-show="loadingAllMovies">
-             Loading movies...
-         </div>
-         <div ng-show="!loadingAllMovies">
-             <input type="text" ng-model="movieSearch" ng-change="search()"/>
+
+         <div >
+             <input placeholder="Search for a movie..." class="search-input" type="text" ng-model="movieSearch" ng-change="search()"/>
              <ul ng-show="movieSearch">
-                 <li ng-click="getMovieDetails(movie)" ng-repeat="movie in movieList | filter : {title: movieSearch} | limitTo: 5">
+                 <li ng-click="getMovieDetails(movie)" ng-repeat="movie in movieList | filter : {title: movieSearch} | limitTo: 8">
                      <div class="movie-search-result">
                             <img src="app/images/batman.jpg" />
-                             <div>
-                                 {{movie.title}}
-                                     <p>
-                                         {{movie.release_date.substring(0,10)}}
-                                     </p>
+                             <div class="movie-search-result-data">
+                                 <span>{{movie.title}}</span>
+                                 <span> {{movie.release_date.substring(0,10)}}</span>
                              </div>
                      </div>
 
@@ -29,15 +27,26 @@
      </div>
 
  <div class="movie-details">
-     <div ng-show="!selectedMovie" class="no-selection">
+     <div ng-if="!selectedMovie" class="no-selection">
          No movie selected
      </div>
-     <div ng-show="selectedMovie" class="movie-image">
+     <div ng-if="selectedMovie" class="movie-image">
         <img src="app/images/batman.jpg"  />
      </div>
-     <div ng-show="selectedMovie" class="movie-information">
+     <div ng-if="selectedMovie" class="movie-information">
          <h1>{{selectedMovie.title}} ({{selectedMovie.release_date.substring(0,4)}})</h1>
+
+         <h3>{{selectedMovie.overview}}</h3>
+         <h3>Top Billed Cast</h3>
+         <div class="movie-details-cast">
+             <div ng-repeat="cast in selectedMovie.castList" class="movie-details-cast-circle">
+                 <img class="circle-profile" src="app/images/nichoson.jpg"></img>
+                 <h4>{{cast.name}}</h4>as
+                 <h5>{{cast.character}}</h5>
+             </div>
+         </div>
      </div>
+
  </div>
 
 </div>

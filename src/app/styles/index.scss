@@ -2,7 +2,7 @@
 bower.json of your dependencies */
 // bower:scss
 // endbower
-$background-color: #efefef;
+$background-color: rgba(239, 239, 239, 0.6);;
 $netflix-red: #db0000;
 
 
@@ -32,11 +32,78 @@ body {
     font-size: $xl-size;
 }
 
+
+.search-loader {
+    max-height: 100%;
+    max-width:100%;
+    img {
+        width: 100%;
+    }
+}
+
 .main-container {
     display:flex;
     flex-direction: row;
-    opacity: 0.65;
-    background-color: $background-color;
+    background-color:  $background-color;
+}
+
+.movie-search {
+    display:flex;
+    flex: 1;
+    min-height: $minimum-app-height;
+    width: 20%;
+    border-right: 1px solid #e8e8e8;
+    background-color: rgba(245, 245, 245, 0.6);
+
+    ul {
+        margin:0px;
+        padding:0px;
+        list-style-type: none;
+    }
+
+    .search-input {
+        text-indent: 5px;
+        border-radius: 4px;
+        outline: none;
+        margin: 10px;
+        max-width: calc(100% - 20px);
+        border-style: none;
+        height: $xl-size;
+        border: 1px solid #e4e4e4;
+    }
+
+
+    .movie-search-result{
+        display: flex;
+        flex-direction: row;
+        height: $super-size;
+        margin: 5px;
+        padding-top: 5px;
+        border-top: 1px solid #e8e8e8;
+
+        img {
+            max-height: 72px;
+            display: flex;
+            flex: 1 2 auto;
+        }
+
+        div {
+            display: flex;
+            flex: 2 1 auto;
+            width: 70%;
+            max-height: $super-size;
+            float:right;
+
+            font-size: $small-size;
+            vertical-align: top;
+        }
+
+        .movie-search-result-data {
+            margin-left: 4px;
+            display: flex;
+            flex-direction: column;
+        }
+    }
 }
 
 .movie-details {
@@ -47,21 +114,19 @@ body {
     margin: 20px;
 
     min-height: $minimum-app-height;
-    display: inline;
 
     .no-selection {
         display: block;
         text-align: center;
         margin-top: 25%;
+        margin-left: calc(50% - 150px);
         font-size: $xl-size;
         height: 100%;
     }
 
     .movie-image {
-        display:inline-block;
-        max-width: 45%;
-        min-width: 320px;
-        height: 100%;
+        display:flex;
+        flex: 1 1 40%;
         img{
             height: 100%;
             max-width: 100%;
@@ -69,55 +134,34 @@ body {
     }
 
     .movie-information{
-        width: 60%;
+        display:flex;
+        flex-direction: column;
+        flex: 1 4 auto;
         margin-left: 10px;
         height: 100%;
-        display: inline-block;
         vertical-align: top;
     }
 
+    .movie-details-cast {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .movie-details-cast-circle {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        text-align: center;
+        .circle-profile {
+            width:80%;
+            margin: auto;
+            border:2px solid black;
+            border-radius: 700px;
+        }
+    }
+
 }
 
-.movie-search {
-    display:flex;
-    flex: 0 1 auto;
-    min-height: $minimum-app-height;
-    width: 20%;
-    display: inline-block;
-    border-right: 1px solid #e8e8e8;
-    background-color: white;
-
-    ul {
-        margin:0px;
-        padding:0px;
-        list-style-type: none;
-    }
-}
-
-.movie-search-result{
-    height: $super-size;
-    margin: 5px;
-    padding-top: 5px;
-    border-top: 1px solid #e8e8e8;
-
-    .result-icon {
-        display: inline-block;
-    }
-
-    img {
-        max-height: 72px;
-    }
-
-    div {
-        display: inline;
-        width: 70%;
-        max-height: $super-size;
-        float:right;
-
-        font-size: $small-size;
-        vertical-align: top;
-    }
-}
 
 
 

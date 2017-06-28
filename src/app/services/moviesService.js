@@ -5,14 +5,12 @@
     var getAllMovies = function() {
         return $http.get(APPLICATION_URLS.getAllMovies)
             .then(function(response) {
-                console.log('response')
-                console.log(response);
                 if (response.status===200) {
                     return response.data;
                 }
-                else {
-                    //error
-                }
+            }, function(error) {
+                console.log(error);
+                console.log('Getting movies failed:' + error.message);
             });
     }
 
@@ -22,9 +20,8 @@
                 if (response.status===200) {
                     return response.data;
                 }
-                else {
-                    //error
-                }
+            }, function(error) {
+                console.log('Error getting single movie:' + error.message);
             });
     }
 
@@ -34,9 +31,8 @@
                 if (response.status===200) {
                     return response.data;
                 }
-                else {
-                    //error
-                }
+            }, function(error) {
+                console.log('Error getting cast members for movie id ' + id + ':' + error.message);
             });
     }
 
@@ -46,9 +42,8 @@
                 if (response.status===200) {
                     return response.data;
                 }
-                else {
-                    //error
-                }
+            }, function(error) {
+                console.log('Failed searching for movie:' + error.message);
             });
     }
 
